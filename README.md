@@ -1,5 +1,9 @@
 # owasp-asvs-audit
 
+[![ASVS v5.0.0](https://img.shields.io/badge/ASVS-v5.0.0-blue)](https://github.com/OWASP/ASVS/tree/v5.0.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![ASVS Content: CC-BY-SA 4.0](https://img.shields.io/badge/ASVS_Content-CC--BY--SA_4.0-orange)](https://creativecommons.org/licenses/by-sa/4.0/)
+
 A Claude Code skill that performs a comprehensive security audit of your web application codebase against the [OWASP Application Security Verification Standard (ASVS) v5.0.0](https://github.com/OWASP/ASVS).
 
 ## What This Does
@@ -46,31 +50,50 @@ This skill audits at **Level 3**, which is cumulative — it includes all L1 and
 
 ## Installation
 
-Copy the skill into your Claude Code project's `.claude/skills/` directory:
+### Method 1: Git Clone (Recommended)
+
+Clone into your project's `.claude/skills/` directory. This makes it easy to pull updates later.
+
+```bash
+# From your project root
+mkdir -p .claude/skills
+git clone https://github.com/kristovatlas/owasp-asvs-audit-skill.git .claude/skills/owasp-asvs-audit
+```
+
+To update later:
+
+```bash
+git -C .claude/skills/owasp-asvs-audit pull
+```
+
+### Method 2: Manual Download
+
+For air-gapped environments or if you prefer not to use git submodules:
+
+1. Download the [latest release](https://github.com/kristovatlas/owasp-asvs-audit-skill/releases) or clone the repo to a temporary location.
+2. Copy `SKILL.md` and the `sections/` directory into `.claude/skills/owasp-asvs-audit/` in your project.
+
+```bash
+mkdir -p .claude/skills/owasp-asvs-audit
+cp SKILL.md .claude/skills/owasp-asvs-audit/
+cp -r sections/ .claude/skills/owasp-asvs-audit/sections/
+```
+
+### Resulting Structure
+
+After installation, your project should have:
 
 ```
-.claude/
-  skills/
-    owasp-asvs-audit/
-      SKILL.md
-      sections/
-        V01-encoding-and-sanitization.md
-        V02-validation-and-business-logic.md
-        V03-web-frontend-security.md
-        V04-api-and-web-services.md
-        V05-file-processing.md
-        V06-authentication.md
-        V07-session-management.md
-        V08-authorization.md
-        V09-self-contained-tokens.md
-        V10-oauth-and-oidc.md
-        V11-cryptography.md
-        V12-secure-communication.md
-        V13-configuration.md
-        V14-data-protection.md
-        V15-secure-coding-and-architecture.md
-        V16-security-logging-and-error-handling.md
-        V17-webrtc.md
+your-project/
+├── .claude/
+│   └── skills/
+│       └── owasp-asvs-audit/
+│           ├── SKILL.md
+│           └── sections/
+│               ├── V01-encoding-and-sanitization.md
+│               ├── ...
+│               └── V17-webrtc.md
+└── (your project files)
 ```
 
 ## Usage
@@ -157,9 +180,21 @@ A full audit across 17 chapters can take a while. If the process is interrupted,
 
 To force a fresh audit, delete the `asvs-audit-results/` directory before running.
 
+## Discoverability
+
+This skill follows the emerging Agent Skills open format with `SKILL.md` at the repo root for compatibility with skill aggregators and agent tools.
+
+### GitHub Topics
+
+If you fork this repo, consider adding these topics for discoverability:
+
+`claude-code` `agent-skills` `SKILL.md` `code-audit` `security-review` `owasp` `asvs` `static-analysis`
+
 ## ASVS Source and Licensing
 
 The ASVS requirement text included in this skill is sourced from [OWASP ASVS v5.0.0](https://github.com/OWASP/ASVS/tree/v5.0.0) and is used under the [Creative Commons Attribution-Share Alike v4.0](https://creativecommons.org/licenses/by-sa/4.0/) license.
+
+The skill code (SKILL.md, audit guidance, tooling) is licensed under the [MIT License](LICENSE).
 
 This skill is not affiliated with or endorsed by the OWASP Foundation. It is an independent tool that uses the publicly available ASVS standard as its assessment framework.
 

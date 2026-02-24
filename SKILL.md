@@ -1,6 +1,8 @@
 ---
 name: owasp-asvs-audit
 description: Performs a comprehensive security audit of a web application codebase against all ~350 requirements of the OWASP Application Security Verification Standard (ASVS) v5.0.0. Covers 17 chapters including injection prevention, authentication, authorization, cryptography, session management, and API security. Produces a structured report with findings, evidence, confidence scores, and remediation guidance.
+version: 1.0.0
+tags: [security, audit, owasp, asvs, code-review, static-analysis]
 ---
 
 # OWASP ASVS Audit Skill
@@ -31,6 +33,8 @@ Before the first audit, verify the ASVS reference files are populated:
 3. Also download the CSV from GitHub releases (`OWASP_Application_Security_Verification_Standard_5.0.0_en.csv`) for cross-reference during auditing.
 
 ## Skill File Structure
+
+When installed as a Claude Code skill, the files are located at:
 
 ```
 .claude/skills/owasp-asvs-audit/
